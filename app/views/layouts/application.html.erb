@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -22,9 +22,52 @@
             <span class="navbar-brand">LOGO</span>
           <% end %>
           <% if admin_signed_in? %>
-            
+          <li>
+            <%= link_to admin_items_path, class: 'nav-link text-light' do %>
+              <span>商品一覧</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_customers_path, class: 'nav-link text-light' do %>
+              <span>会員一覧</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_path, class: 'nav-link text-light' do %>
+              <span>注文履歴一覧</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_genres_path, class: 'nav-link text-light' do %>
+              <span>ジャンル一覧</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
+              <span>ログアウト</span>
+            <% end %>
+          </li>
           <% else if customer_signed_in? %>
-
+          <li>
+            <%= link_to admin_items_path, class: 'nav-link text-light' do %>
+              <span>マイページ</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_customers_path, class: 'nav-link text-light' do %>
+              <span>商品一覧</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_path, class: 'nav-link text-light' do %>
+              <span>カート</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_genres_path, class: 'nav-link text-light' do %>
+              <span>ログアウト</span>
+            <% end %>
+          </li>
           <% else %>
           <% end %>
         </div>

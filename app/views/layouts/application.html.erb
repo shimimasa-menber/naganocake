@@ -10,7 +10,25 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <% if customer_signed_in? %>
+          <a class="navbar-brand" href="/items">
+            <span>LOGO</span>
+          </a>
+          <% else %>
+            <span class="navbar-brand">LOGO</span>
+          <% end %>
+          <% if admin_signed_in? %>
+            
+          <% else if customer_signed_in? %>
+
+          <% else %>
+          <% end %>
+        </div>
+      </nav>
+    </header>
   </body>
 </html>

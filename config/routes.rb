@@ -8,9 +8,20 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
-  get 'public/homes/about', as: 'about'
-  
+  root to: 'public/homes#top'
+  get 'admin' => 'admin/homes#top', as: 'admin'
+
+  scope module: :public do
+    get 'about' => 'homes#about', as: 'about'
+    get 'customers/confirm'
+    patch 'customers/update_status', as: 'update_status'
+    delete 'cart_items/destroy_all', as: 'destroy_all'
+    post 'orders/confirm'
+    get 'orders/complete', as: 'complete'
+  end
+
   namespace :admin do
+    resources :customers, only: [:edit, :index, :update, :show]
     resources :genres, only: [:edit, :create, :index, :update]
     resources :items, only: [:edit, :create, :index, :update, :show, :new]
     resources :orders, only: [:show, :update]
@@ -18,6 +29,7 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
+    resources :customers, only: [:edit, :update, :show]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
     resources :addresses, only: [:index, :create, :destroy, :edit, :update]

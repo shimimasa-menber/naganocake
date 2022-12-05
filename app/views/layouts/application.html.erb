@@ -15,7 +15,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <% if customer_signed_in? %>
-          <a class="navbar-brand" href="/items">
+          <a class="navbar-brand" href="/">
             <span>LOGO</span>
           </a>
           <% else %>
@@ -43,32 +43,52 @@
             <% end %>
           </li>
           <li>
-            <%= link_to new_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
+            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
               <span>ログアウト</span>
             <% end %>
           </li>
-          <% else if customer_signed_in? %>
+          <% elsif customer_signed_in? %>
           <li>
-            <%= link_to admin_items_path, class: 'nav-link text-light' do %>
+            <%= link_to customers_my_page_path, class: 'nav-link text-light' do %>
               <span>マイページ</span>
             <% end %>
           </li>
           <li>
-            <%= link_to admin_customers_path, class: 'nav-link text-light' do %>
+            <%= link_to items_path, class: 'nav-link text-light' do %>
               <span>商品一覧</span>
             <% end %>
           </li>
           <li>
-            <%= link_to admin_path, class: 'nav-link text-light' do %>
+            <%= link_to cart_items_path, class: 'nav-link text-light' do %>
               <span>カート</span>
             <% end %>
           </li>
           <li>
-            <%= link_to admin_genres_path, class: 'nav-link text-light' do %>
+            <%= link_to destroy_customer_session_path, class: 'nav-link text-light' do %>
               <span>ログアウト</span>
             <% end %>
           </li>
           <% else %>
+          <li>
+            <%= link_to about_path, class: 'nav-link text-light' do %>
+              <span>About</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to items_path, class: 'nav-link text-light' do %>
+              <span>商品一覧</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_customer_registration_path, class: 'nav-link text-light' do %>
+              <span>新規登録</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_customer_session_path, class: 'nav-link text-light' do %>
+              <span>ログイン</span>
+            <% end %>
+          </li>
           <% end %>
         </div>
       </nav>

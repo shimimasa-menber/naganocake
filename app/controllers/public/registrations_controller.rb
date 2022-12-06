@@ -60,10 +60,4 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  def new
-  end
-
-  def create
-  end
-
 end

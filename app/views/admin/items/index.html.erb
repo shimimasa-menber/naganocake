@@ -1,9 +1,13 @@
 <div class="container">
   <div class="row">
     <div class = "col-xl-10 offset-xl-1">
-      <h3>商品一覧</h3>
-      <%= link_to new_admin_item_path,class:"fa-solid fa-circle-plus" do %>
-      <% end %>
+      <h3 style="display: inline-block;">商品一覧</h3>
+      <div class="button-right"
+        style="display: inline-block;text-align: right;width: 85%;">
+        <%= link_to new_admin_item_path do %>
+          <i class="fas fa-plus-circle"></i>
+        <% end %>
+      </div>
       <table class = "table">
         <thead>
           <tr>
@@ -24,6 +28,7 @@
             <td><%=genre_id %></td>
             <td><%=is_active %></td>
           <% end %>
+          <%= paginate @items %>
         </tbody>
       </table>
     </div>

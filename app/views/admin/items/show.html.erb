@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class = "col-xl-3">
+      <h3>商品詳細</h3>
+      <%= image_tag @item.get_item_image(100, 100) %>
+    </div>
+    <div class = "col-xl-7 offset-xl-2">
+      <div class="form-group d-flex align-items-center">
+        商品名
+        <%=@item.name %>
+      </div>
+      <div class="form-group d-flex align-items-center">
+        商品説明
+        <%=@item.introduction %>
+      </div>
+      <div class="form-group d-flex align-items-center">
+        ジャンル
+        <%=@item.genre %>
+      </div>
+      <div class="form-group d-flex align-items-center">
+        税込価格(税抜価格)
+        <%=@item.price %>
+      </div>
+      <div class="form-group d-flex align-items-center">
+        販売ステータス
+        <%=@item.is_active %>
+      </div>
+      <div class="form-group">
+          <%= f.submit '編集する' ,class: "btn btn-success" %>
+      </div>

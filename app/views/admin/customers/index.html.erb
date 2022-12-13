@@ -2,6 +2,27 @@
   <div class="row">
     <div class = "col-xl-8 offset-xl-2">
     <H3>会員一覧</H3>
-    </div>
+      <table class = "table">
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+            <td><%= customer %></td>
+            <%= link_to admin_customer_path(customer.id) do %>
+              <td><%= customer.last_name %></td>
+            <% end %>
+            <td><%= customer.email %></td>
+            <td><%= customer.is_deleted %></td>
+          <% end %>
+          <%= paginate @customers %>
+        </tbody>
+      </table>
+     </div>
   </div>
 </div>

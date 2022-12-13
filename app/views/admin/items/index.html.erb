@@ -20,13 +20,13 @@
         </thead>
         <tbody>
           <% @items.each do |item| %>
-            <td><%=item_id %></td>
+            <td><%= item %></td>
             <%= link_to admin_item_path(item.id) do %>
-              <td><%=item.name %></td>
+              <td><%= item.name %></td>
             <% end %>
-            <td><%=price %></td>
-            <td><%=genre_id %></td>
-            <td><%=is_active %></td>
+            <td><%=item.price %></td>
+            <td><%=item.genre_id %></td>
+            <td><%=item.is_active %></td>
           <% end %>
           <%= paginate @items %>
         </tbody>

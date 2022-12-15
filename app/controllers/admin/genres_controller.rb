@@ -4,6 +4,7 @@ class Admin::GenresController < ApplicationController
   end
 
   def create
+    
   end
 
   def edit

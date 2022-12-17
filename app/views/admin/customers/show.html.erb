@@ -4,7 +4,48 @@
       <div class="form-group d-flex align-items-center">
         <%=@customer.last_name %>
         <%=@customer.first_name %>
-        さんの会員情報編集
+        さんの会員詳細
+      </div>
+      <div class="form-group d-flex align-items-center">
+        会員ID
+        <%=@customer.id %>
+      </div>
+      <div class="form-group d-flex align-items-center">
+        氏名
+        <%=@customer.last_name %>
+        <%=@customer.first_name %>
+      </div>
+      <div class="form-group d-flex align-items-center">
+        郵便番号
+        <%=@customer.postal_code %>
+      </div>
+      <div class="form-group d-flex align-items-center">
+        住所
+        <%=@customer.address %>
+      </div>
+      <div class="form-group d-flex align-items-center">
+        電話番号
+        <%=@customer.telephone_number %>
+      </div>
+      <div class="form-group d-flex align-items-center">
+        メールアドレス
+        <%=@customer.email %>
+      </div>
+      <div class="form-group d-flex align-items-center">
+        会員ステータス
+        <%=if @customer.is_deleted == false %>
+        有効
+        <%=if @customer.is_deleted == true %>
+        退会
+        <% end %>
+      </div>
+      <div class="form-group d-flex align-items-center">
+        <%= link_to edit_admin_customer_path(@customer.id) do %>
+          <%= submit_tag '編集する' ,class: "btn btn-success" %>
+        <% end %>
+        <%= link_to admin_path do %>
+          <%= submit_tag '注文履歴一覧を見る' ,class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
   </div>

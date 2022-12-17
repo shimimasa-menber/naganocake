@@ -12,7 +12,22 @@
           </tr>
         </thead>
         <tbody>
-          
+          <% @orders.each do |order| %>
+            <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
+          <% end %>
+          <% @customers.each do |customer| %>
+            <td><%= customer.last_name %></td>
+            <td><%= customer.first_name %></td>
+          <% end %>
+          <% @order_details.each do |order_detail| %>
+            <td><%= order_detail.quantity %></td>
+          <% end %>
+          <% @orders.each do |order| %>
+            <td><%= order.status %></td>
+          <% end %>
+          <%= paginate @orders %>
+          <%= paginate @customers %>
+          <%= paginate @order_details %>
         </tbody>
       </table>
     </div>

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class = "col-xl-8 offset-xl-2">
+      <div class="form-group d-flex align-items-center">
+        <h3>注文履歴詳細</h3>
+        <div class="form-group d-flex align-items-center">
+          購入者
+           <%= link_to edit_admin_order_path(@order.id) do %>
+          <%=@customer.last_name %>
+          <%=@customer.first_name %>
+        </div>
+        <div class="form-group d-flex align-items-center">
+          注文日
+          <%=@order.created_at %>
+        </div>
+        <div class="form-group d-flex align-items-center">
+          配送先
+          <%=@order.address %>
+        </div>
+        <div class="form-group d-flex align-items-center">
+          支払方法
+          <%=@order.payment_method %>
+        </div>
+        <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+        <div class="form-group d-flex align-items-center">
+          注文ステータス
+          <%= f.select :status, [ ["入金待ち", 0], ["入金確認", 1],["制作中", 2],["発送準備中", 3],["発送済み", 4] ], prompt: "--選択してください--" %>
+          <%= f.submit '更新' ,class: "btn btn-success" %>
+        </div>
+        
+      

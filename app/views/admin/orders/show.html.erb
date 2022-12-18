@@ -27,5 +27,30 @@
           <%= f.select :status, [ ["入金待ち", 0], ["入金確認", 1],["制作中", 2],["発送準備中", 3],["発送済み", 4] ], prompt: "--選択してください--" %>
           <%= f.submit '更新' ,class: "btn btn-success" %>
         </div>
-        
-      
+      </div>
+    </div>
+    <div class="row">
+      <div class = "col-xl-8 offset-xl-1">
+        <table class = "table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>商品名</th>
+              <th>単価(税込)</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th>制作ステータス</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @items.each do |item| %>
+
+            <% end %>
+          </tbody>
+      </div>
+      <div class = "col-xl-2">
+      </div>
+    </div>
+  </div>
+
+

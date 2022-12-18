@@ -29,6 +29,7 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
+    @genre = @item.genre
       if @item.update(item_params)
         flash[:notice] = "You have updated user successfully."
         redirect_to admin_item_path(@item.id)

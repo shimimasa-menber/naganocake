@@ -22,12 +22,14 @@
         </thead>
         <tbody>
           <% @genres.each do |genre| %>
-            <td><%= genre.name %></td>
-            <td>
-              <%= link_to edit_admin_genre_path(genre.id) do %>
-                <%= submit_tag '編集する' ,class: "btn btn-success" %>
-              <% end %>
-            </td>
+            <tr>
+              <td><%= genre.name %></td>
+              <td>
+                <%= link_to edit_admin_genre_path(genre.id) do %>
+                  <%= submit_tag '編集する' ,class: "btn btn-success" %>
+                <% end %>
+              </td>
+            </tr>
           <% end %>
         </tbody>
     </div>

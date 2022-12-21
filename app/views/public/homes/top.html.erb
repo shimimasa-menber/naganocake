@@ -16,13 +16,28 @@
         </tbody>
       </table>
     </div>
-    <div class = "col-xl-5 offset-xl-2">
+    <div class = "col-xl-7 offset-xl-2">
       <p>ようこそ、ながのCAKEへ！</p>
       <p>このサイトは、ケーキ販売のECサイトになります。</p>
       <p>会員でない方も商品の閲覧はできますが、</p>
       <p>購入には会員登録が必要になります。</p>
       <H1>新着商品</H1>
-
+      <div class="row">
+        <% @items.each do |item| %>
+        <div class = "col-xl-3">
+          <tr>
+            <td>
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag item.image, :size => '130x130' %>
+              <% end %>
+            </td>
+            <td><%=item.name %></td>
+            <td><%=item.price %></td>
+          </tr>
+        </div>
+        <% end %>
+        
+      </div>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class = "col-xl-6 offset-xl-3">
-      <h3>新規会員登録</h3>
+    <div class = "col-xl-9">
+      <h4>新規会員登録</h4>
       <% if @customer.errors.any? %>
       <%= @customer.errors.count %>errors prohibited this obj from being saved:
         <ul>
@@ -11,5 +11,62 @@
         </ul>
       <% end %>
       <%= form_with model: @customer, url: customer_registration_path, method: :post do |f| %>
+        <div class="form-group d-flex align-items-center">
+          <div style = "width: 30%;">
+            <label for="customer_name">名前</label>
+          </div>
+          <%= f.text_field :last_name ,class: "form-control name", style: "width: 30%;" %>
+          <%= f.text_field :first_name ,class: "form-control name", style: "width: 30%;" %>
+        </div>
+        <div class="form-group d-flex align-items-center">
+          <div style = "width: 30%;">
+            <label for="customer_name">フリガナ</label>
+          </div>
+          <%= f.text_field :last_name_kana ,class: "form-control name", style: "width: 30%;" %>
+          <%= f.text_field :first_name_kana ,class: "form-control name", style: "width: 30%;" %>
+        </div>
+        <div class="form-group d-flex align-items-center">
+          <div style = "width: 30%;">
+            <label for="customer_email">メールアドレス</label>
+          </div>
+          <%= f.text_field :email ,class: "form-control name", style: "width: 30%;" %>
+        </div>
+        <div class="form-group d-flex align-items-center">
+          <div style = "width: 30%;">
+            <label for="customer_postal_code">郵便番号(ハイフンなし)</label>
+          </div>
+          <%= f.text_field :postal_code ,class: "form-control name", style: "width: 30%;" %>
+        </div>
+        <div class="form-group d-flex align-items-center">
+          <div style = "width: 30%;">
+            <label for="customer_address">住所</label>
+          </div>
+          <%= f.text_field :address ,class: "form-control name", style: "width: 60%;" %>
+        </div>
+        <div class="form-group d-flex align-items-center">
+          <div style = "width: 30%;">
+            <label for="customer_telephone_number">電話番号(ハイフンなし)</label>
+          </div>
+          <%= f.text_field :telephone_number ,class: "form-control name", style: "width: 30%;" %>
+        </div>
+        <div class="form-group d-flex align-items-center">
+          <div style = "width: 30%;">
+            <label for="customer_encrypted_password">パスワード(6文字以上)</label>
+          </div>
+          <%= f.text_field :encrypted_password ,class: "form-control name", style: "width: 30%;" %>
+        </div>
+        <div class="form-group d-flex align-items-center">
+          <div style = "width: 30%;">
+            <label for="customer_encrypted_password">パスワード(確認用)</label>
+          </div>
+          <%= f.text_field :encrypted_password ,class: "form-control name", style: "width: 30%;" %>
+        </div>
+        <div class="form-group text-center">
+          <div style = "width: 90%;">
+            <%= f.submit '新規登録' ,class: "btn btn-success" %>
+          </div>
+        </div>
       <% end %>
-
+      <h4>既に登録済の方</h4>
+      <%= link_to "こちら", new_customer_session_path  %>
+      からログインしてください。

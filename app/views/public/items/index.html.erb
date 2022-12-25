@@ -17,7 +17,7 @@
       </table>
     </div>
     <div class = "col-xl-8 offset-xl-1">
-    <H1>商品一覧</H1>
+    <H1>商品一覧 (全<%= @items.count %>件)</H1>
       <div class="row">
         <% @items.each do |item| %>
         <div class = "col-xl-3">
@@ -28,8 +28,8 @@
           <% else %>
             <%= link_to new_customer_session_path do %>
               <%= image_tag item.image, :size => '160x160' %>
-            <% end %> 
-          <% end %> 
+            <% end %>
+          <% end %>
               <%=item.name %><br>
               ¥<%=item.price %>
         </div>

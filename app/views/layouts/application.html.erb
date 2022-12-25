@@ -21,6 +21,7 @@
           <% else %>
             <span class="navbar-brand">LOGO</span>
           <% end %>
+          
           <% if admin_signed_in? %>
           <li>
             <%= link_to admin_items_path, class: 'nav-link text-light' do %>

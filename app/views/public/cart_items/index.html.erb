@@ -19,10 +19,18 @@
         <tbody>
           <% @cart_items.each do |cart_item| %>
             <tr>
-              <td></td>
-              <td></td>
               <td>
+                <%= image_tag cart_item.item.image, :size => '50x50' %>
+                <%= cart_item.item.name %>
               </td>
+              <td>¥<%= cart_item.item.price %></td>
+              <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+              <td>
+                <%= f.select :amount, *[1..5] %>
+                <%= f.submit '変更' ,class: "btn btn-success" %>
+              </td>
+              
+              <% end %>
             </tr>
           <% end %>
         </tbody>

@@ -3,7 +3,7 @@
     <div class = "col-xl-3 offset-xl-1 mt-4">
       <h4 style = "background-color: #d3d3d3;">ショッピングカート</h4>
     </div>
-    <div class = "col-xl-7 offset-xl-1 mt-4 mb-4 ml-auto">
+    <div class = "col-xl-7 offset-xl-1 mt-4 mb-4 text-right">
       <%= form_with model: @cart_items, url: cart_items_destroy_all_path, method: :delete do |f| %>
         <%= f.submit 'カートを空にする' ,class: "btn btn-danger" %>
       <% end %>
@@ -36,6 +36,7 @@
               <% end %>
               </td>
               <td>¥<%= cart_item.subtotal %></td>
+              <% @total = @total + cart_item.subtotal %>
               <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :delete do |f| %>
               <td><%= f.submit '削除する' ,class: "btn btn-danger" %></td>
               <% end %>
@@ -45,16 +46,21 @@
       </table>
       <div class="row">
         <div class = "col-xl-3 offset-xl-1">
-          <%=link_to root_path, class: "btn btn-primary mt-4" do %>
+          <%=link_to root_path, class: "btn btn-primary" do %>
             買い物を続ける
           <% end %>
         </div>
         <div class = "col-xl-7 offset-xl-1">
-
+          <table class = "table">
+            <tr>
+              <th>合計金額</th>
+              <td>¥<%= @total %></td>
+            </tr>
+          </table>
         </div>
       </div>
       <div class="row">
-        <div class = "col-xl-12">
+        <div class = "col-xl-12 text-center">
           <%=link_to new_order_path, class: "btn btn-success mt-5" do %>
             情報入力に進む
           <% end %>

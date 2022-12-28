@@ -1,13 +1,16 @@
 <div class="container">
   <div class="row">
     <div class = "col-xl-3 offset-xl-1 mt-4">
-      <h4 style = "background-color: #d3d3d3;">注文情報入力</h4>
+      <h4 style = "background-color: #d3d3d3 ;">注文情報入力</h4>
       <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
-      <div class="form-group">
-        <label for="item_is_active">支払方法</label>
-        <%= f.radio_button :payment_method , "クレジットカード" %> 販売中 <%= f.radio_button :payment_method , "銀行振込" %> 販売停止中
+        <h5>支払方法</h5>
+        <%= f.radio_button :payment_method , "credit_card" %>
+        <%= f.label :payment_method_credit_card, "クレジットカード" %>
+        <%= f.radio_button :payment_method , "transfer" %>
+        <%= f.label :payment_method_transfer, "銀行振込" %>
+        
       <% end %>
-        </div>
+      </div>
     </div>
   </div>
 </div>

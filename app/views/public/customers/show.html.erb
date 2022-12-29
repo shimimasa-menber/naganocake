@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class = "col-xl-3 offset-xl-1 mt-4 mb-4">
+      <h4 style = "background-color: #d3d3d3;">マイページ</h4>
+    </div>
+  </div>
+  <div class = "col-xl-4">
+    <table class="table">
+      <tr>
+        <th>登録情報</th>
+        <td>
+          <%=link_to  customers_information_edit_path, class: "btn btn-success ml-5" do %>
+            編集する
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class = "col-xl-8">
+    <table class="table">
+      <tr>
+        <th>氏名</th>
+        <td>
+          <%= @customer.last_name %>
+          <%= @customer.first_name %>
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+</div>

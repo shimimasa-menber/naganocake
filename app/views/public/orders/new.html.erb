@@ -2,15 +2,33 @@
   <div class="row">
     <div class = "col-xl-3 offset-xl-1 mt-4">
       <h4 style = "background-color: #d3d3d3 ;">注文情報入力</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class = "col-xl-6 offset-xl-1">
       <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
-        <h5>支払方法</h5>
+        <h5 class = "mt-5">支払方法</h5>
         <%= f.radio_button :payment_method , "credit_card" %>
         <%= f.label :payment_method_credit_card, "クレジットカード" %>
         <%= f.radio_button :payment_method , "transfer" %>
         <%= f.label :payment_method_transfer, "銀行振込" %>
-
+        <h5 class = "mt-3">お届け先</h5>
+        <%= f.radio_button :current_customer_address , "ご自身の住所" %>
+        <%= f.label :current_customer_address, "ご自身の住所" %>
+        <div>
+          〒<%= current_customer.postal_code %>
+          <%= current_customer.address %>
+          <%= current_customer.last_name %>
+          <%= current_customer.first_name %>
+        </div>
+        <div class = "mt-3">
+          <%= f.radio_button :address , "登録済住所から選択" %>
+          <%= f.label :address, "登録済住所から選択" %>
+        </div>
+        <div>
+          <%= f.select :address, [ ], prompt: "--選択してください--", style: "width: 80%;" %>
+        </div>
       <% end %>
-      </div>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class = "col-xl-10 offset-xl-1">
-      <h3 style="display: inline-block;">商品一覧</h3>
+    <div class = "col-xl-10 offset-xl-1 mt-4">
+      <h4 style = "background-color: #d3d3d3; width: 15%;">商品一覧</h4>
       <div class="button-right"
         style="display: inline-block;text-align: right;width: 85%;">
         <%= link_to new_admin_item_path do %>
@@ -29,7 +29,7 @@
               <td><%=item.genre.name %></td>
               <td>
                 <% if item.is_active == true %>
-                  販売中
+                  <div class = "text-success">販売中</div>
                 <% elsif item.is_active == false %>
                   販売停止中
                 <% end %>

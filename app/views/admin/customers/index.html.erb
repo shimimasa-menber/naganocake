@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class = "col-xl-8 offset-xl-2">
-    <H3>会員一覧</H3>
-      <table class = "table">
+    <div class = "col-xl-8 offset-xl-2 mt-4">
+    <H4 style = "background-color: #d3d3d3; width: 15%">会員一覧</H4>
+      <table class = "table mt-4">
         <thead>
           <tr>
             <th>会員ID</th>
@@ -13,12 +13,14 @@
         </thead>
         <tbody>
           <% @customers.each do |customer| %>
+          <tr>
             <td><%= customer %></td>
             <%= link_to admin_customer_path(customer.id) do %>
               <td><%= customer.last_name %></td>
             <% end %>
             <td><%= customer.email %></td>
             <td><%= customer.is_deleted %></td>
+          </tr>
           <% end %>
           <%= paginate @customers %>
         </tbody>

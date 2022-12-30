@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class = "col-xl-10 offset-xl-1">
-      <h3>ジャンル一覧・追加</h3>
+    <div class = "col-xl-10 offset-xl-1 mt-4">
+      <h4 style = "background-color: #d3d3d3; width: 25%;">ジャンル一覧・追加</h4>
       <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
-        <div class="form-group d-flex align-items-center">
+        <div class="form-group d-flex align-items-center mt-4">
           <div style = "width: 20%;">
             <label for="genre_name">ジャンル名</label>
           </div>
-          <%= f.text_field :name ,class: "form-control name", style: "width: 30%;" %>
+          <%= f.text_field :name ,class: "form-control name mr-5", style: "width: 30%;" %>
           <%= f.submit '新規登録' ,class: "btn btn-success", style: "width: 30%;" %>
         </div>
       <% end %>
     </div>
     <div class = "col-xl-6 offset-xl-3">
-      <table class = "table">
+      <table class = "table mt-4">
         <thead>
           <tr>
             <th>ジャンル</th>

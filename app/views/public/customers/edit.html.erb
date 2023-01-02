@@ -2,7 +2,7 @@
   <div class="row">
     <div class = "col-xl-9">
       <div class="row">
-        <div class = "col-xl-3">
+        <div class = "col-xl-3 mt-4">
           <h4 style = "background-color: #d3d3d3;">会員情報編集</h4>
         </div>
       </div>
@@ -17,47 +17,47 @@
       <%= form_with model: @customer, url: customers_information_edit_path, method: :patch do |f| %>
         <div class="form-group d-flex align-items-center mt-3">
           <div style = "width: 30%;">
-            <label for="customer_name">氏名</label>
+            氏名
           </div>
-          <%= f.text_field :last_name ,class: "form-control name ", style: "width: 30%;" %>
-          <%= f.text_field :first_name ,class: "form-control name ml-5", style: "width: 30%;" %>
+          <%= f.text_field :last_name ,class: "form-control", style: "width: 30%;" %>
+          <%= f.text_field :first_name ,class: "form-control ml-5", style: "width: 30%;" %>
         </div>
         <div class="form-group d-flex align-items-center">
           <div style = "width: 30%;">
-            <label for="customer_name">フリガナ</label>
+            フリガナ
           </div>
-          <%= f.text_field :last_name_kana ,class: "form-control name", style: "width: 30%;" %>
-          <%= f.text_field :first_name_kana ,class: "form-control name ml-5", style: "width: 30%;" %>
+          <%= f.text_field :last_name_kana ,class: "form-control", style: "width: 30%;" %>
+          <%= f.text_field :first_name_kana ,class: "form-control ml-5", style: "width: 30%;" %>
         </div>
         <div class="form-group d-flex align-items-center">
           <div style = "width: 30%;">
-            <label for="customer_postal_code">郵便番号</label>
+            郵便番号
           </div>
           <%= f.text_field :postal_code ,class: "form-control name", style: "width: 30%;" %>
         </div>
         <div class="form-group d-flex align-items-center">
           <div style = "width: 30%;">
-            <label for="customer_address">住所</label>
+            住所
           </div>
-          <%= f.text_field :address ,class: "form-control name", style: "width: 66%;" %>
+          <%= f.text_field :address ,class: "form-control", style: "width: 66%;" %>
         </div>
         <div class="form-group d-flex align-items-center">
           <div style = "width: 30%;">
-            <label for="customer_telephone_number">電話番号</label>
+            電話番号
           </div>
-          <%= f.text_field :telephone_number ,class: "form-control name", style: "width: 30%;" %>
+          <%= f.text_field :telephone_number ,class: "form-control", style: "width: 30%;" %>
         </div>
-         <div class="form-group d-flex align-items-center">
+        <div class="form-group d-flex align-items-center">
           <div style = "width: 30%;">
-            <label for="customer_email">メールアドレス</label>
+            メールアドレス
           </div>
-          <%= f.text_field :email ,class: "form-control name", style: "width: 30%;" %>
+          <%= f.text_field :email ,class: "form-control", style: "width: 30%;" %>
         </div>
         <div class = "text-center">
           <%=link_to customers_my_page_path, class: "btn btn-success mt-5 mr-5" do %>
             編集内容を保存
           <% end %>
-          <%=link_to customers_confirm_path, class: "btn btn-danger mt-5 ml-5" do %>
+          <%=link_to customers_confirm_path, method: :delete class: "btn btn-danger mt-5 ml-5" do %>
             退会する
           <% end %>
         </div>

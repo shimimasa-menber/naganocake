@@ -17,12 +17,15 @@
           <% if customer_signed_in? %>
           <a class="navbar-brand" href="/">
             <span>LOGO</span>
-            
           </a>
+          <div class = "navbar-brand text-center">
+            ようこそ、<%= current_customer.last_name %>さん！
+          </div>
+
           <% else %>
             <span class="navbar-brand">LOGO</span>
           <% end %>
-          
+
           <% if admin_signed_in? %>
           <li>
             <%= link_to admin_items_path, class: 'nav-link text-light' do %>

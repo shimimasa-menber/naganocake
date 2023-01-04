@@ -32,9 +32,7 @@
             宛名
           </div>
           <%= f.text_field :name ,class: "form-control", style: "width: 30%;" %>
-          <%=link_to addresses_path, class: "btn btn-success ml-auto" do %>
-            新規登録
-          <% end %>
+          <%= f.submit '新規登録' ,class: "btn btn-success ml-auto" %>
         </div>
       <% end %>
     </div>
@@ -55,10 +53,10 @@
               <td><%= address.address %></td>
               <td><%= address.name %></td>
               <td>
-                <%=link_to edit_address_path, method: :patch, class: "btn btn-success" do %>
+                <%=link_to edit_address_path(address.id), class: "btn btn-success ml-4 mr-4" do %>
                   編集する
                 <% end %>
-                <%=link_to addresses_path, method: :delete, class: "btn btn-danger" do %>
+                <%=link_to address_path(address.id), method: :delete, class: "btn btn-danger" do %>
                 　削除する
                 <% end %>
               </td>

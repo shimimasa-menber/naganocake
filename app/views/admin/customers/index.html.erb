@@ -14,12 +14,21 @@
         <tbody>
           <% @customers.each do |customer| %>
           <tr>
-            <td><%= customer %></td>
+            <td><%= customer.id %></td>
             <%= link_to admin_customer_path(customer.id) do %>
-              <td><%= customer.last_name %></td>
+              <td>
+                <%= customer.last_name %>
+                <%= customer.first_name %>
+              </td>
             <% end %>
             <td><%= customer.email %></td>
-            <td><%= customer.is_deleted %></td>
+            <td>
+              <% if customer.is_deleted == false %>
+              <div class = "text-success">有効</div>
+              <% else %>
+              <div class = "text-secondary">退会</div>
+              <% end %>
+            </td>
           </tr>
           <% end %>
           <%= paginate @customers %>

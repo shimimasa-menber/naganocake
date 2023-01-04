@@ -14,15 +14,16 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    if params[:order][:address_option] == "1"
-      
-    elsif params[:order][:address_option] == "2"
-      
-    else params[:order][:address_option] == "3"
-      
-    end
+    @order = Order.new(order_params)
+    binding.pry
   end
 
   def complete
   end
+  
+  def order_params
+  params.require(:order).permit(:payment_method)
+  end
+  
 end
+

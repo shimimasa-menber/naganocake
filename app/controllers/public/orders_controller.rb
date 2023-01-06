@@ -14,8 +14,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @order_details = OrderDetail.all
     @order = Order.new(order_params)
-    
+
     if params[:order][:select_address] == "1"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address

@@ -22,15 +22,14 @@
     <div class = "col-xl-4 offset-xl-1 mt-4">
       <h4><%= @item.name %></h4>
       <h4><%= @item.introduction %></h4>
-      <h4>¥<%= @item.price %>(税込)</h4>
-      <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+      <h4>¥<%= @item.with_tax_price %>(税込)</h4>
+      <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
         <div class = "mt-5">
           <%= f.select :amount, *[1..5] %>
           <%= f.hidden_field :item_id, :value => @item.id %>
           <%= f.hidden_field :customer_id, :value => @customer.id %>
           <%= f.submit 'カートに追加する' ,class: "btn btn-success ml-5" %>
         </div>
-
       <% end %>
     </div>
   </div>

@@ -8,11 +8,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @order_details = OrderDetail.all
   end
 
   def create
     @order = Order.new(order_params)
-    
+    @customer = current_customer
     @order.save
     @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|

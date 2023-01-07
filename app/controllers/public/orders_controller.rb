@@ -11,11 +11,29 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    @order = Order.new(order_params)
+    
+    @order.save
+    @cart_items = current_customer.cart_items
+    @cart_items.each do |cart_item|
+      @order_detail = OrderDetail.new
+      @order_detail.item_id = cart_item.item.id
+      @order_detail.amount = cart_item.amount
+      @order_detail.price = cart_item.item.price
+      @order_detail.save
+    end
+    current_customer.cart_items.destroy_all
+    redirect_to complete_path
+
   end
 
   def confirm
-    @order_details = OrderDetail.all
+    @cart_items = current_customer.cart_items
+    @total = 0
     @order = Order.new(order_params)
+
+
+    #@orders = current_customer.orders
 
     if params[:order][:select_address] == "1"
       @order.postal_code = current_customer.postal_code

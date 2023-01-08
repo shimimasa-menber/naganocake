@@ -18,8 +18,8 @@
               <%= order.customer.last_name %>
               <%= order.customer.first_name %>
             </td>
-            <td>order.order_detail.quantity</td>
-            <td><%= order.status %></td>
+            <td><%= order.order_details.sum(:amount) %></td>
+            <td><%= order.status_i18n %></td>
           <% end %>
           <%= paginate @orders %>
         </tbody>

@@ -23,11 +23,11 @@
         <div class = "col-xl-3 mt-4">
           <% if customer_signed_in? %>
             <%= link_to item_path(item.id) do %>
-              <%#= image_tag item.image, :size => '160x160' %>
+              <%= image_tag item.image, :size => '160x160' %>
             <% end %>
           <% else %>
             <%= link_to new_customer_session_path do %>
-              <%#= image_tag item.image, :size => '160x160' %>
+              <%= image_tag item.image, :size => '160x160' %>
             <% end %>
           <% end %>
            <div class = "mt-3">

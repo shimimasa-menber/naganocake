@@ -5,19 +5,23 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order.shopping_cost = 800
+    @total = 0
   end
 
   def index
-    @order_details = OrderDetail.all
+    @orders = current_customer.orders
   end
 
   def create
     @order = Order.new(order_params)
-    @customer = current_customer
+    @order.customer_id = current_customer.id
     @order.save
     @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
+      @order_detail.order_id = @order.id
       @order_detail.item_id = cart_item.item.id
       @order_detail.amount = cart_item.amount
       @order_detail.price = cart_item.item.price
@@ -32,7 +36,7 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
     @total = 0
     @order = Order.new(order_params)
-
+    @order.shopping_cost = 800
 
     #@orders = current_customer.orders
 
@@ -55,7 +59,7 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-  params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+  params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shopping_cost, :total_payment)
   end
 
 end

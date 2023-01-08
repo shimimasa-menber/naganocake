@@ -7,7 +7,7 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order.shopping_cost = 800
-    @total = 0
+    @order_details = @order.order_details
   end
 
   def index

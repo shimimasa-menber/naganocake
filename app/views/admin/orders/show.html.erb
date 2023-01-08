@@ -1,65 +1,71 @@
 <div class="container">
   <div class="row">
-    <div class = "col-xl-8 offset-xl-2">
-      <div class="form-group d-flex align-items-center">
-        <h3>注文履歴詳細</h3>
-        <div class="form-group d-flex align-items-center">
-          購入者
-           <%= link_to edit_admin_order_path(@order.id) do %>
-          <%=@customer.last_name %>
-          <%=@customer.first_name %>
-        </div>
-        <div class="form-group d-flex align-items-center">
-          注文日
-          <%=@order.created_at %>
-        </div>
-        <div class="form-group d-flex align-items-center">
-          配送先
-          <%=@order.address %>
-        </div>
-        <div class="form-group d-flex align-items-center">
-          支払方法
-          <%=@order.payment_method %>
-        </div>
-        <div class="form-group d-flex align-items-center">
-          注文ステータス
-          <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
-            <%= f.select :status, [ ["入金待ち", 0], ["入金確認", 1],["制作中", 2],["発送準備中", 3],["発送済み", 4] ], prompt: "--選択してください--" %>
-            <%= f.submit '更新' ,class: "btn btn-success" %>
-          <% end %>
-        </div>
-      </div>
+    <div class = "col-xl-4 mt-4">
+      <h4 style = "background-color: #d3d3d3; width: 45%;">注文履歴詳細</h4>
     </div>
-    <div class="row">
-      <div class = "col-xl-8 offset-xl-1">
-        <table class = "table table-hover table-inverse">
-          <thead>
-            <tr>
-              <th>商品名</th>
-              <th>単価(税込)</th>
-              <th>数量</th>
-              <th>小計</th>
-              <th>制作ステータス</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @orders.each do |order| %>
-              <td><%= order.items.name %></td>
-              <td><%= order.order_details.tax_included_price %></td>
-              <td><%= order.order_details.quantity %></td>
-              <td></td>
-              <%= form_with model: @order_detail, url: admin_order_detail_path(@order_detail.id), method: :patch do |f| %>
-                <td>
-                  <%= f.select :making_status, [ ["制作不可", 0], ["制作待ち", 1],["制作中", 2],["制作完了", 3] ], prompt: "--選択してください--" %>
-                  <%= f.submit '更新' ,class: "btn btn-success" %>
-                </td>
-              <% end %>
-            <% end %>
-          </tbody>
+  </div>
+  <div class="row">
+    <div class = "col-xl-9 mt-4">
+      <div class="form-group d-flex align-items-center">
+        <span class = "mr-5">購入者</span>
+        <%= link_to admin_customer_path(@customer.id) do %>
+          <%= @order.name %>
+        <% end %>
       </div>
-      <div class = "col-xl-2">
+      <div class="form-group d-flex align-items-center">
+        <span class = "mr-5">注文日</span>
+        <%= @order.created_at %>
+      </div>
+      <div class="form-group d-flex align-items-center">
+        <span class = "mr-5">配送先</span>
+        〒<%= @order.postal_code %>
+        <%= @order.address %>
+        <%= @order.name %>
+      </div>
+      <div class="form-group d-flex align-items-center">
+        <span class = "mr-5">支払方法</span>
+        <%= @order.payment_method_i18n %>
+      </div>
+      <div class="form-group d-flex align-items-center">
+        <span class = "mr-5">注文ステータス</span>
+        <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+          <%= f.select :status, [ ["waiting_payment_i18n", 0], [:payment_confirmation_i18n, 1],[:production_i18n, 2],[:shipping_preparation_i18n, 3],[:shipped_i18n, 4] ], prompt: "--選択してください--" %>
+          <%= f.submit '更新' ,class: "btn btn-success ml-5" %>
+        <% end %>
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class = "col-xl-9">
+      <table class = "table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.with_tax_price %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.with_tax_price * order_detail.amount %></td>
+          <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
+            <td>
+              <%= f.select :making_status, [ [:production_not_allowed_i18n, 0], [:waiting_production_i18n, 1],[:production_i18n, 2],[:production_completed_i18n, 3] ], prompt: "--選択してください--" %>
+              <%= f.submit '更新' ,class: "btn btn-success ml-5" %>
+            </td>
+          <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 

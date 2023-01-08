@@ -33,9 +33,9 @@
       </div>
       <div class="form-group d-flex align-items-center">
         会員ステータス
-        <%=if @customer.is_deleted == false %>
+        <% if @customer.is_deleted == false %>
         有効
-        <%=if @customer.is_deleted == true %>
+        <% else %>
         退会
         <% end %>
       </div>

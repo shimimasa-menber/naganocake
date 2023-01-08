@@ -13,6 +13,7 @@
         </thead>
         <tbody>
           <% @orders.each do |order| %>
+          <tr>
             <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
             <td>
               <%= order.customer.last_name %>
@@ -20,6 +21,7 @@
             </td>
             <td><%= order.order_details.sum(:amount) %></td>
             <td><%= order.status_i18n %></td>
+          </tr>
           <% end %>
           <%= paginate @orders %>
         </tbody>

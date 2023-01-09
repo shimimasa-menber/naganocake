@@ -29,7 +29,6 @@
       <div class="form-group d-flex align-items-center">
         <span class = "mr-5">注文ステータス</span>
         <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
-          <%#= f.select :status, [ ['waiting_payment_i18n', 0], ['payment_confirmation_i18n', 1],['production_i18n', 2],['shipping_preparation_i18n', 3],['shipped_i18n', 4] ], prompt: "--選択してください--" %>
           <%= f.select :status,Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"),k]} %>
           <%= f.submit '更新' ,class: "btn btn-success ml-5" %>
         <% end %>
@@ -64,6 +63,22 @@
           </tr>
         <% end %>
         </tbody>
+      </table>
+    </div>
+    <div class = "col-xl-3">
+      <table class = "table table-hover table-inverse">
+        <tr>
+          <th>商品合計</th>
+          <td><%= @order_details.sum(&:subtotal) %></td>
+        </tr>
+        <tr>
+          <th>送料</th>
+          <td><%= @order.shopping_cost %></td>
+        </tr>
+        <tr>
+          <th>請求金額合計</th>
+          <td><%= @order.total_payment %></td>
+        </tr>
       </table>
     </div>
   </div>

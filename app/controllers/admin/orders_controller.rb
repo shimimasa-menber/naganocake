@@ -10,9 +10,9 @@ class Admin::OrdersController < ApplicationController
      @order = Order.find(params[:id])
      @order.update(order_params)
      redirect_to admin_order_path(@order.id)
-     order_detail = @order.order_detail
-     order_detail.update(order_detail_params)
-     redirect_to admin_order_path(@order.id)
+     #order_details = @order.order_details
+    # order_details.update(order_details_params)
+    # redirect_to admin_order_path(@order.id)
 
   end
 
@@ -20,9 +20,7 @@ class Admin::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:status)
   end
-  def order_detail_params
-    params.require(:order_detail).permit(:making_status)
-  end
+  
 
 end
 

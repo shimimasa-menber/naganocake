@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class = "col-xl-6 offset-xl-3">
-      <h3>商品新規登録</h3>
+    <div class = "col-xl-2 offset-xl-3 mt-4">
+      <h4 style = "background-color: #d3d3d3;">商品新規登録</h4>
       <% if @item.errors.any? %>
       <%= @item.errors.count %>errors prohibited this obj from being saved:
         <ul>
@@ -10,8 +10,10 @@
           <% end %>
         </ul>
       <% end %>
+    </div>
+    <div class = "col-xl-6 offset-xl-3">
       <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
-        <div class="form-group d-flex align-items-center">
+        <div class="form-group d-flex align-items-center mt-4">
           <div style = "width: 20%;">
             <label for="item_image">商品画像</label>
           </div>
@@ -33,7 +35,7 @@
           <div style = "width: 20%;">
             <label for="item_genre">ジャンル</label>
           </div>
-          <%= f.select :genre_id, [ ["ケーキ", 1], ["プリン", 2],["焼き菓子", 3],["キャンディ", 4] ], prompt: "--選択してください--", style: "width: 80%;" %>
+          <%= f.select :genre_id, [ ["ケーキ", 1], ["プリン", 2],["キャンディ", 3],["焼き菓子", 4] ], prompt: "--選択してください--", style: "width: 80%;" %>
         </div>
         <div class="form-group d-flex align-items-center">
           <div style = "width: 20%;">
@@ -43,7 +45,10 @@
         </div>
         <div class="form-group">
           <label for="item_is_active">販売ステータス</label>
-          <%= f.radio_button :is_active , "販売中" %> 販売中 <%= f.radio_button :is_active , "販売停止中" %> 販売停止中
+          <%= f.radio_button :is_active , true %>
+          <%= f.label :is_active, "販売中" %>
+          <%= f.radio_button :is_active , false %>
+          <%= f.label :is_active, "販売停止中" %>
         </div>
         <div class="form-group">
           <%= f.submit '新規登録' ,class: "btn btn-success" %>

@@ -1,8 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class = "col-xl-9">
-      <h4>ログイン</h4>
-      <h5>会員の方はこちらからログイン</h5>
+    <div class = "col-xl-2 mt-4">
+      <h4 style = "background-color :#d3d3d3; ">ログイン</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class = "col-xl-4 mt-3">
+      <h5 style = "background-color :#d3d3d3; ">会員の方はこちらからログイン</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class = "col-xl-9 mt-3">
       <%= form_with model: @customer, url: customer_session_path, method: :post do |f| %>
         <div class="form-group d-flex align-items-center">
           <div style = "width: 30%;">

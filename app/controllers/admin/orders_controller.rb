@@ -1,8 +1,8 @@
 class Admin::OrdersController < ApplicationController
 
   def show
-    @customer = Customer.find(params[:id])
     @order = Order.find(params[:id])
+    @customer = @order.customer
     @order_details = @order.order_details
   end
 
@@ -20,7 +20,7 @@ class Admin::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:status)
   end
-  
+
 
 end
 

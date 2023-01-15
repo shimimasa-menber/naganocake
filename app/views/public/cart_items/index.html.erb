@@ -61,12 +61,12 @@
       </div>
       <div class="row">
         <div class = "col-xl-12 text-center">
-          <% if @cart_items == 0 %>
-            <%= link_to cart_items_path, class: "btn btn-success mt-5" do %>
+          <% if @cart_items.present? %>
+            <%= link_to new_order_path, class: "btn btn-success mt-5" do %>
               情報入力に進む
             <% end %>
           <% else %>
-            <%= link_to new_order_path, class: "btn btn-success mt-5" do %>
+            <%= link_to cart_items_path, class: "btn btn-success mt-5" do %>
               情報入力に進む
             <% end %>
           <% end %>

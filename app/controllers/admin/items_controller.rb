@@ -13,7 +13,6 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-     flash[:notice] = "You have created book successfully."
      redirect_to admin_item_path(@item.id)
     else
      render :new
@@ -32,7 +31,6 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @genre = @item.genre
       if @item.update(item_params)
-        flash[:notice] = "You have updated user successfully."
         redirect_to admin_item_path(@item.id)
       else
         render :edit
